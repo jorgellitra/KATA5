@@ -14,8 +14,11 @@ import java.sql.Statement;
 public class Application {
 
     public static void main(String[] args) throws SQLException, ClassNotFoundException, FileNotFoundException, IOException {
-        Class.forName("org.sqlite.JDBC");
-        Connection conec = DriverManager.getConnection("jdbc:sqlite:BDMails.db");
+        //Class.forName("org.sqlite.JDBC");
+        Class.forName("oracle.jdbc.driver.OracleDriver");
+        
+        //Connection conec = DriverManager.getConnection("jdbc:sqlite:BDMails.db");
+        Connection conec = DriverManager.getConnection("jdbc:oracle:thin:@:1521:orcl","system","orcl");
         Statement state = conec.createStatement();
         ResultSet rs = state.executeQuery("SELECT * FROM PEOPLE");
         String nameFile = "";
